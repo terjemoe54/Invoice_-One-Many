@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Invoice__One_ManyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-        }
+                .modelContainer(for: [PayTo.self, Invoice.self])
+         }
+    
+    }
+   
+    init() {
+        print(URL.applicationSupportDirectory.path(percentEncoded: false))
     }
 }
