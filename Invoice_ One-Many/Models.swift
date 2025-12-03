@@ -4,6 +4,9 @@
 //
 //  Created by Terje Moe on 03/12/2025.
 //
+// Endret Category to PayTo
+// Endret Item to Invoice
+
 
 import Foundation
 import SwiftData
