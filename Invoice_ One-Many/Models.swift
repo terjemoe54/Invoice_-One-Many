@@ -4,7 +4,7 @@
 //
 //  Created by Terje Moe on 03/12/2025.
 //
-// Endret Category to PayTo
+// Endret Category to Customer
 // Endret Item to Invoice
 
 
@@ -12,7 +12,7 @@ import Foundation
 import SwiftData
 
 @Model
-class PayTo {
+class Customer {
     @Attribute(.unique)
     var title: String
     var invoices: [Invoice]?
@@ -29,8 +29,8 @@ class Invoice {
     var amount: Double
     var isPaid: Bool
     
-    @Relationship(deleteRule: .cascade, inverse: \PayTo.invoices)
-    var payTo: PayTo?
+    @Relationship(deleteRule: .cascade, inverse: \Customer.invoices)
+    var payTo: Customer?
     
     init(
         title: String = "",
@@ -43,6 +43,4 @@ class Invoice {
         self.amount = amount
         self.isPaid = isPaid
     }
-    
-    
 }

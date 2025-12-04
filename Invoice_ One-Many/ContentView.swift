@@ -11,31 +11,47 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
-    @Query private var paytos: [PayTo]
+   
+    @Query private var paytos: [Customer]
+    
     @State private var payto: String = ""
     
     var body: some View {
-        List {
-            Section("PayTo Title") {
-                TextField("Enter PayTo Here", text: $payto)
-                Button("Add PayTo") {
-                    context.insert(PayTo(title: payto))
+        NavigationView {
+            List {
+                Section("Customer: ") {
+                    TextField("Enter Customer Here", text: $payto)
+                    Button("Add Customer") {
+                        context.insert(Customer(title: payto))
+                        payto = ""
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(payto.isEmpty)
+               
                 }
-                .disabled(payto.isEmpty)
-            }
-            
-            Section("PayTos") {
-                ForEach(paytos) { payto in
-                    Text(payto.title)
+                
+                Section("Customers") {
+                    ForEach(paytos) { payto in
+                        Text(payto.title)
+                            .swipeActions {
+                                Button(role: .destructive){
+                                    withAnimation {
+                                        context.delete(payto)
+                                    }
+                                } label: {
+                                    Label("Delete" , systemImage: "trash.fill")
+                                }
+                            }
+                    }
                 }
+                
             }
-            
-        }
-        .navigationTitle("Create ToDo")
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Dismiss") {
-                    dismiss()
+            .navigationTitle("Create Customer")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Dismiss") {
+                        dismiss()
+                    }
                 }
             }
         }

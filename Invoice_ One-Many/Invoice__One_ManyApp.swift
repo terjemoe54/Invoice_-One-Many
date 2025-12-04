@@ -13,7 +13,7 @@ struct Invoice__One_ManyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [PayTo.self, Invoice.self])
+                .modelContainer(for: [Customer.self, Invoice.self])
          }
     
     }
