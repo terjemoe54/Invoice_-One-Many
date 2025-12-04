@@ -30,7 +30,7 @@ class Invoice {
     var isPaid: Bool
     
     @Relationship(deleteRule: .cascade, inverse: \Customer.invoices)
-    var payTo: Customer?
+    var customer: Customer?
     
     init(
         title: String = "",

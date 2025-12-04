@@ -23,12 +23,12 @@ struct CreateInvoiceView: View {
                    TextField("Name", text: $invoice.title)
                }
                
-               Section{
+               Section("General"){
                    DatePicker("Chose a Date", selection: $invoice.dueDate)
                    Toggle("Is Paid:", isOn: $invoice.isPaid)
                }
                
-               Section {
+               Section("Select a Customer") {
                    Picker("", selection: $selectedCustomer){
                       ForEach(customers) { customer in
                            Text(customer.title)
@@ -36,16 +36,14 @@ struct CreateInvoiceView: View {
                        }
                       .labelsHidden()
                       .pickerStyle(.inline)
-                       
-                       
                        Text("None")
                            .tag(nil as Customer?)
                    }
                }
-               
-               
+      
                Section {
                    Button("Create"){
+                       save()
                        dismiss()
                    }
                    
@@ -61,6 +59,7 @@ struct CreateInvoiceView: View {
                
                ToolbarItem(placement: .primaryAction){
                    Button("Done"){
+                       save()
                        dismiss()
                    }
                    .disabled(invoice.title.isEmpty)
@@ -73,4 +72,14 @@ struct CreateInvoiceView: View {
 #Preview {
     CreateInvoiceView()
         .modelContainer(for: Invoice.self)
+}
+
+extension CreateInvoiceView {
+    
+    func save() {
+        modelContext.insert(invoice)
+        invoice.customer = selectedCustomer
+        selectedCustomer?.invoices?.append(invoice)
+        
+    }
 }

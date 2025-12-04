@@ -13,8 +13,9 @@ struct Invoice__One_ManyApp: App {
     var body: some Scene {
         WindowGroup {
             // CreateCustomerView()
-            CreateInvoiceView()
-                .modelContainer(for: [Customer.self, Invoice.self])
+            // CreateInvoiceView()
+            ContentView()
+            .modelContainer(for: [Customer.self, Invoice.self])
          }
     
     }
