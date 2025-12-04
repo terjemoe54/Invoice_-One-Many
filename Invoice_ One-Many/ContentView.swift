@@ -12,31 +12,35 @@ struct ContentView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
    
-    @Query private var paytos: [Customer]
+    @Query private var customers: [Customer]
     
-    @State private var payto: String = ""
+    @State private var title: String = ""
     
     var body: some View {
         NavigationView {
             List {
                 Section("Customer: ") {
-                    TextField("Enter Customer Here", text: $payto)
+                    TextField("Enter Customer Here", text: $title)
                     Button("Add Customer") {
-                        context.insert(Customer(title: payto))
-                        payto = ""
+                        withAnimation{
+                            let customer = Customer(title: title)
+                            context.insert(customer)
+                            customer.invoices = []
+                            title = ""
+                        }
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(payto.isEmpty)
-               
+                    .disabled(title.isEmpty)
+                
                 }
                 
                 Section("Customers") {
-                    ForEach(paytos) { payto in
-                        Text(payto.title)
+                    ForEach(customers) { customer in
+                        Text(customer.title)
                             .swipeActions {
                                 Button(role: .destructive){
                                     withAnimation {
-                                        context.delete(payto)
+                                        context.delete(customer)
                                     }
                                 } label: {
                                     Label("Delete" , systemImage: "trash.fill")
