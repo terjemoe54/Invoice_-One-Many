@@ -12,7 +12,8 @@ import SwiftData
 struct Invoice__One_ManyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // CreateCustomerView()
+            CreateInvoiceView()
                 .modelContainer(for: [Customer.self, Invoice.self])
          }
     

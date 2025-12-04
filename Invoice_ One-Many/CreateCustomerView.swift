@@ -8,9 +8,9 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct CreateCustomerView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var context
+    @Environment(\.modelContext) var modelContext
    
     @Query private var customers: [Customer]
     
@@ -24,7 +24,7 @@ struct ContentView: View {
                     Button("Add Customer") {
                         withAnimation{
                             let customer = Customer(title: title)
-                            context.insert(customer)
+                            modelContext.insert(customer)
                             customer.invoices = []
                             title = ""
                         }
@@ -40,7 +40,7 @@ struct ContentView: View {
                             .swipeActions {
                                 Button(role: .destructive){
                                     withAnimation {
-                                        context.delete(customer)
+                                        modelContext.delete(customer)
                                     }
                                 } label: {
                                     Label("Delete" , systemImage: "trash.fill")
@@ -63,5 +63,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    CreateCustomerView()
 }
