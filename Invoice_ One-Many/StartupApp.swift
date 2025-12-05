@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct Invoice__One_ManyApp: App {
+struct StartupApp: App {
     var body: some Scene {
         WindowGroup {
             // CreateCustomerView()

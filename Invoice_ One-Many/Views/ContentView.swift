@@ -40,6 +40,17 @@ struct ContentView: View {
                             Text("\(invoice.dueDate, format: Date.FormatStyle(date: .numeric, time: .shortened))")
                                 .font(.callout)
                             
+                            if let customer = invoice.customer {
+                                Text(customer.title)
+                                     .foregroundStyle(Color.blue)
+                                     .bold()
+                                     .padding(.horizontal)
+                                     .padding(.vertical, 8)
+                                     .background(Color.blue.opacity(0.1),
+                                                 in: RoundedRectangle(cornerRadius: 8,
+                                                                      style: .continuous))
+                             }
+                            
                         }
                         
                         
