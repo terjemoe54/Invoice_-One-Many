@@ -15,7 +15,7 @@ struct Invoice__One_ManyApp: App {
             // CreateCustomerView()
             // CreateInvoiceView()
             ContentView()
-            .modelContainer(for: [Customer.self, Invoice.self])
+            .modelContainer(for: Invoice.self)
          }
     
     }

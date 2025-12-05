@@ -20,11 +20,11 @@ class OriginalToDo {
     }
 }
 
-struct UpdateInvioceView: View {
+struct UpdateInvoiceView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State var selectedCategory: Category?
+    @State var selectedCustomer: Customer?
 
     @Bindable var invoice: Invoice
 
@@ -51,8 +51,8 @@ struct UpdateInvioceView: View {
     }
 }
 
-//#Preview {
-//    UpdateInvioceView(invoice: invoice)
-//        .modelContainer(for: Invoice.self)
-//
-//}
+#Preview {
+    UpdateInvoiceView(invoice: Invoice())
+        .modelContainer(for: Invoice.self)
+
+}

@@ -87,8 +87,8 @@ struct ContentView: View {
             },
                    content: { editItem in
                 NavigationStack {
-            //        UpdateToDoView(item: editItem)
-            //            .interactiveDismissDisabled()
+                    UpdateInvoiceView(invoice: editItem)
+                           .interactiveDismissDisabled()
                 }
             })
             .sheet(isPresented: $showCreateCustomer,
