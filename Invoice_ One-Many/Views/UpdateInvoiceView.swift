@@ -8,46 +8,52 @@
 import SwiftUI
 import SwiftData
 
-//class OriginalToDo {
-//    var title: String
-//    var dueDate: Date
-//    var isPaid: Bool
-//    
-//    init(item: Invoice) {
-//        self.title = item.title
-//        self.dueDate = item.dueDate
-//        self.isPaid = item.isPaid
-//    }
-//}
 
 struct UpdateInvoiceView: View {
     
     @Environment(\.dismiss) var dismiss
     
     @State var selectedCustomer: Customer?
-
+    
+    @Query private var customers: [Customer]
+    
     @Bindable var invoice: Invoice
 
     var body: some View {
         List {
             
-            Section("Invoice title") {
-                TextField("Name", text: $invoice.title)
+            Section("Faktura For") {
+                TextField("Navn", text: $invoice.title)
             }
             
             Section {
-                DatePicker("Choose a date",
+                DatePicker("Forfallsdato",
                            selection: $invoice.dueDate)
-                Toggle("Important?", isOn: $invoice.isPaid)
+                Toggle("Betalt ?", isOn: $invoice.isPaid)
             }
             
+            Section("Velg en Kunde") {
+                Picker("", selection: $invoice.customer){
+                   ForEach(customers) { customer in
+                        Text(customer.title)
+                           .tag(customer as Customer?)
+                    }
+                   .labelsHidden()
+                   .pickerStyle(.inline)
+                    Text("Ingen")
+                        .tag(nil as Customer?)
+                }
+            }
+   
+            
+            
             Section {
-                Button("Update") {
+                Button("Oppdater") {
                     dismiss()
                 }
             }
         }
-        .navigationTitle("Update Invoice")
+        .navigationTitle("Oppdater Faktura")
     }
 }
 

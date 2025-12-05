@@ -19,9 +19,9 @@ struct CreateCustomerView: View {
     var body: some View {
         NavigationView {
             List {
-                Section("Customer: ") {
-                    TextField("Enter Customer Here", text: $title)
-                    Button("Add Customer") {
+                Section("Kunde: ") {
+                    TextField("Kunde Navn", text: $title)
+                    Button("Opprett Kunde") {
                         withAnimation{
                             let customer = Customer(title: title)
                             modelContext.insert(customer)
@@ -34,7 +34,7 @@ struct CreateCustomerView: View {
                 
                 }
                 
-                Section("Customers") {
+                Section("Kunder") {
                     ForEach(customers) { customer in
                         Text(customer.title)
                             .swipeActions {
@@ -43,17 +43,17 @@ struct CreateCustomerView: View {
                                         modelContext.delete(customer)
                                     }
                                 } label: {
-                                    Label("Delete" , systemImage: "trash.fill")
+                                    Label("Slett" , systemImage: "trash.fill")
                                 }
                             }
                     }
                 }
                 
             }
-            .navigationTitle("Create Customer")
+            .navigationTitle("Opprett Kunde")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Dismiss") {
+                    Button("Avslutt") {
                         dismiss()
                     }
                 }

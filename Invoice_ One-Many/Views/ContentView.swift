@@ -78,20 +78,20 @@ struct ContentView: View {
                             }
                             
                         } label: {
-                            Label("Delete", systemImage: "trash.fill")
+                            Label("Slett", systemImage: "trash.fill")
                         }
                         
                         Button {
                             invoiceToEdit = invoice
                         } label: {
-                            Label("Edit", systemImage: "pencil")
+                            Label("Endre", systemImage: "pencil")
                         }
                         .tint(.orange)
                         
                     }
                 }
             }
-            .navigationTitle("My Invoice List")
+            .navigationTitle("Faktura Liste")
             .sheet(item: $invoiceToEdit,
                    onDismiss: {
                 invoiceToEdit = nil
@@ -116,7 +116,7 @@ struct ContentView: View {
             })
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("New Customer") {
+                    Button("Ny Kunde") {
                         showCreateCustomer.toggle()
                     }
                 }
@@ -126,7 +126,7 @@ struct ContentView: View {
                 Button(action: {
                     showCreateInvoice.toggle()
                 }, label: {
-                    Label("New Invoice", systemImage: "plus")
+                    Label("Ny Faktura", systemImage: "plus")
                         .bold()
                         .font(.title2)
                         .padding(8)

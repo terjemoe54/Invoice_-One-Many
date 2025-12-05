@@ -19,16 +19,16 @@ struct CreateInvoiceView: View {
    var body: some View {
        NavigationStack {
            List {
-               Section("Invoice Title"){
-                   TextField("Name", text: $invoice.title)
+               Section("Faktura For:"){
+                   TextField("Navn", text: $invoice.title)
                }
                
-               Section("General"){
-                   DatePicker("Chose a Date", selection: $invoice.dueDate)
-                   Toggle("Is Paid:", isOn: $invoice.isPaid)
+               Section("Detaljer"){
+                   DatePicker("Forfalls Dato", selection: $invoice.dueDate)
+                   Toggle("Betalt:", isOn: $invoice.isPaid)
                }
                
-               Section("Select a Customer") {
+               Section("Velg en Kunde") {
                    Picker("", selection: $selectedCustomer){
                       ForEach(customers) { customer in
                            Text(customer.title)
@@ -36,29 +36,29 @@ struct CreateInvoiceView: View {
                        }
                       .labelsHidden()
                       .pickerStyle(.inline)
-                       Text("None")
+                       Text("Ingen")
                            .tag(nil as Customer?)
                    }
                }
       
                Section {
-                   Button("Create"){
+                   Button("Opprett"){
                        save()
                        dismiss()
                    }
                    
                }
            }
-           .navigationTitle("Create Invoice")
+           .navigationTitle("Opprett Faktura")
            .toolbar {
                ToolbarItem(placement: .cancellationAction){
-                   Button("Dismiss"){
+                   Button("Avslutt"){
                        dismiss()
                    }
                }
                
                ToolbarItem(placement: .primaryAction){
-                   Button("Done"){
+                   Button("Ferdig"){
                        save()
                        dismiss()
                    }
