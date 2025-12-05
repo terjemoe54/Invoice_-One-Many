@@ -15,7 +15,7 @@ struct ContentView: View {
     
     @State private var showCreateCustomer = false
     @State private var showCreateInvoice = false
-    @State private var toDoToEdit: Invoice?
+    @State private var invoiceToEdit: Invoice?
     
     var body: some View {
         NavigationStack {
@@ -82,7 +82,7 @@ struct ContentView: View {
                         }
                         
                         Button {
-                            toDoToEdit = invoice
+                            invoiceToEdit = invoice
                         } label: {
                             Label("Edit", systemImage: "pencil")
                         }
@@ -92,13 +92,13 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("My Invoice List")
-            .sheet(item: $toDoToEdit,
+            .sheet(item: $invoiceToEdit,
                    onDismiss: {
-                toDoToEdit = nil
+                invoiceToEdit = nil
             },
-                   content: { editItem in
+                   content: { editInvoice in
                 NavigationStack {
-                    UpdateInvoiceView(invoice: editItem)
+                    UpdateInvoiceView(invoice: editInvoice)
                            .interactiveDismissDisabled()
                 }
             })

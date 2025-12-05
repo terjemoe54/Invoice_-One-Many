@@ -8,17 +8,17 @@
 import SwiftUI
 import SwiftData
 
-class OriginalToDo {
-    var title: String
-    var dueDate: Date
-    var isPaid: Bool
-    
-    init(item: Invoice) {
-        self.title = item.title
-        self.dueDate = item.dueDate
-        self.isPaid = item.isPaid
-    }
-}
+//class OriginalToDo {
+//    var title: String
+//    var dueDate: Date
+//    var isPaid: Bool
+//    
+//    init(item: Invoice) {
+//        self.title = item.title
+//        self.dueDate = item.dueDate
+//        self.isPaid = item.isPaid
+//    }
+//}
 
 struct UpdateInvoiceView: View {
     

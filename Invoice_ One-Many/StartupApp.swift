@@ -12,10 +12,8 @@ import SwiftData
 struct StartupApp: App {
     var body: some Scene {
         WindowGroup {
-            // CreateCustomerView()
-            // CreateInvoiceView()
-            ContentView()
-            .modelContainer(for: Invoice.self)
+              ContentView()
+              .modelContainer(for: Invoice.self)
          }
     
     }
