@@ -20,7 +20,7 @@ class Customer {
     init(title: String ) {
         self.title = title
     }
- }
+}
 
 @Model
 class Invoice {

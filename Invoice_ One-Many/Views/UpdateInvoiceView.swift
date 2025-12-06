@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-
 struct UpdateInvoiceView: View {
     
     @Environment(\.dismiss) var dismiss
@@ -21,7 +20,6 @@ struct UpdateInvoiceView: View {
 
     var body: some View {
         List {
-            
             Section("Faktura For") {
                 TextField("Navn", text: $invoice.title)
             }
@@ -44,9 +42,7 @@ struct UpdateInvoiceView: View {
                         .tag(nil as Customer?)
                 }
             }
-   
-            
-            
+
             Section {
                 Button("Oppdater") {
                     dismiss()
@@ -60,5 +56,4 @@ struct UpdateInvoiceView: View {
 #Preview {
     UpdateInvoiceView(invoice: Invoice())
         .modelContainer(for: Invoice.self)
-
 }

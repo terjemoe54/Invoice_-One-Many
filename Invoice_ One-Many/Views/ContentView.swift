@@ -42,18 +42,16 @@ struct ContentView: View {
                             
                             if let customer = invoice.customer {
                                 Text(customer.title)
-                                     .foregroundStyle(Color.blue)
-                                     .bold()
-                                     .padding(.horizontal)
-                                     .padding(.vertical, 8)
-                                     .background(Color.blue.opacity(0.1),
-                                                 in: RoundedRectangle(cornerRadius: 8,
-                                                                      style: .continuous))
-                             }
-                            
+                                    .foregroundStyle(Color.blue)
+                                    .bold()
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 8)
+                                    .background(Color.blue.opacity(0.1),
+                                                in: RoundedRectangle(cornerRadius: 8,
+                                                                     style: .continuous))
+                            }
                         }
-                        
-                        
+      
                         Spacer()
                         
                         Button {
@@ -87,7 +85,6 @@ struct ContentView: View {
                             Label("Endre", systemImage: "pencil")
                         }
                         .tint(.orange)
-                        
                     }
                 }
             }
@@ -100,7 +97,7 @@ struct ContentView: View {
                    content: { editInvoice in
                 NavigationStack {
                     UpdateInvoiceView(invoice: editInvoice)
-                           .interactiveDismissDisabled()
+                        .interactiveDismissDisabled()
                 }
             })
             .sheet(isPresented: $showCreateCustomer,
@@ -139,9 +136,7 @@ struct ContentView: View {
                                     in: Capsule())
                         .padding(.leading)
                         .symbolVariant(.circle.fill)
-                    
                 })
-                
             }
         }
     }

@@ -11,11 +11,11 @@ import SwiftData
 struct CreateCustomerView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
-   
+    
     @Query private var customers: [Customer]
     
     @State private var title: String = ""
-    
+    @State private var customerToEdit: Customer?
     var body: some View {
         NavigationView {
             List {
@@ -31,7 +31,6 @@ struct CreateCustomerView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(title.isEmpty)
-                
                 }
                 
                 Section("Kunder") {
@@ -45,12 +44,29 @@ struct CreateCustomerView: View {
                                 } label: {
                                     Label("Slett" , systemImage: "trash.fill")
                                 }
-                            }
+                                
+                                Button {
+                                    customerToEdit = customer
+                                } label: {
+                                    Label("Endre", systemImage: "pencil")
+                                }
+                                .tint(.orange)
+                                
+                        }
                     }
                 }
-                
             }
             .navigationTitle("Opprett Kunde")
+            .sheet(item: $customerToEdit,
+                   onDismiss: {
+                customerToEdit = nil
+            },
+                   content: { editCustomer in
+                NavigationStack {
+                    UpdateCustomerView(customer: editCustomer)
+                }
+                .interactiveDismissDisabled()
+            })
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Avslutt") {

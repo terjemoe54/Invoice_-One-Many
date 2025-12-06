@@ -14,8 +14,7 @@ struct StartupApp: App {
         WindowGroup {
               ContentView()
               .modelContainer(for: Invoice.self)
-         }
-    
+       }
     }
    
     init() {
