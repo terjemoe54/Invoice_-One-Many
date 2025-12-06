@@ -92,6 +92,7 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Faktura Liste")
+            .bold()
             .sheet(item: $invoiceToEdit,
                    onDismiss: {
                 invoiceToEdit = nil
@@ -119,6 +120,10 @@ struct ContentView: View {
                     Button("Ny Kunde") {
                         showCreateCustomer.toggle()
                     }
+                    .buttonStyle(.borderedProminent)
+                    .bold()
+                    .font(.title2)
+                    .padding(8)
                 }
             }
             .safeAreaInset(edge: .bottom,
@@ -130,7 +135,7 @@ struct ContentView: View {
                         .bold()
                         .font(.title2)
                         .padding(8)
-                        .background(.gray.opacity(0.1),
+                        .background(.blue.opacity(0.1),
                                     in: Capsule())
                         .padding(.leading)
                         .symbolVariant(.circle.fill)
