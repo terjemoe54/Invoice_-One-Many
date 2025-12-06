@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		909FFA232EE08D6300F9D26C /* Invoice_ One-Many.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Invoice_ One-Many.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		909FFA232EE08D6300F9D26C /* Invoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		909FFA252EE08D6300F9D26C /* Invoice_ One-Many */ = {
+		909FFA252EE08D6300F9D26C /* Invoice */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Invoice_ One-Many";
+			path = Invoice;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		909FFA1A2EE08D6200F9D26C = {
 			isa = PBXGroup;
 			children = (
-				909FFA252EE08D6300F9D26C /* Invoice_ One-Many */,
+				909FFA252EE08D6300F9D26C /* Invoice */,
 				909FFA242EE08D6300F9D26C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		909FFA242EE08D6300F9D26C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				909FFA232EE08D6300F9D26C /* Invoice_ One-Many.app */,
+				909FFA232EE08D6300F9D26C /* Invoice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		909FFA222EE08D6200F9D26C /* Invoice_ One-Many */ = {
+		909FFA222EE08D6200F9D26C /* Invoice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 909FFA2E2EE08D6400F9D26C /* Build configuration list for PBXNativeTarget "Invoice_ One-Many" */;
+			buildConfigurationList = 909FFA2E2EE08D6400F9D26C /* Build configuration list for PBXNativeTarget "Invoice" */;
 			buildPhases = (
 				909FFA1F2EE08D6200F9D26C /* Sources */,
 				909FFA202EE08D6200F9D26C /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				909FFA252EE08D6300F9D26C /* Invoice_ One-Many */,
+				909FFA252EE08D6300F9D26C /* Invoice */,
 			);
-			name = "Invoice_ One-Many";
+			name = Invoice;
 			packageProductDependencies = (
 			);
 			productName = "Invoice_ One-Many";
-			productReference = 909FFA232EE08D6300F9D26C /* Invoice_ One-Many.app */;
+			productReference = 909FFA232EE08D6300F9D26C /* Invoice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 909FFA1E2EE08D6200F9D26C /* Build configuration list for PBXProject "Invoice_ One-Many" */;
+			buildConfigurationList = 909FFA1E2EE08D6200F9D26C /* Build configuration list for PBXProject "Invoice" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				909FFA222EE08D6200F9D26C /* Invoice_ One-Many */,
+				909FFA222EE08D6200F9D26C /* Invoice */,
 			);
 		};
 /* End PBXProject section */
@@ -315,7 +315,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		909FFA1E2EE08D6200F9D26C /* Build configuration list for PBXProject "Invoice_ One-Many" */ = {
+		909FFA1E2EE08D6200F9D26C /* Build configuration list for PBXProject "Invoice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				909FFA2C2EE08D6400F9D26C /* Debug */,
@@ -324,7 +324,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		909FFA2E2EE08D6400F9D26C /* Build configuration list for PBXNativeTarget "Invoice_ One-Many" */ = {
+		909FFA2E2EE08D6400F9D26C /* Build configuration list for PBXNativeTarget "Invoice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				909FFA2F2EE08D6400F9D26C /* Debug */,

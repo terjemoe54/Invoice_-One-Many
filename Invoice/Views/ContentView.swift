@@ -21,34 +21,52 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(invoices) { invoice in
-                    
-                    HStack {
+                   HStack {
                         VStack(alignment: .leading) {
-                            
-                            if invoice.isPaid {
-                                Image(systemName: "exclamationmark.3")
-                                    .symbolVariant(.fill)
-                                    .foregroundColor(.red)
-                                    .font(.largeTitle)
-                                    .bold()
-                            }
+//                            if invoice.isPaid {
+//                                HStack{
+//                                    Text("PAID")
+//                                        .font(.system(size: 16,weight: .bold))
+//                                        .foregroundStyle(.green)
+//                                        
+//                                    Image(systemName: "heart.fill")
+//                                        .symbolVariant(.fill)
+//                                        .foregroundColor(.red)
+//                                        .font(.system(size: 16,weight: .bold))
+//                                        .bold()
+//                                }
+//                            }
                             
                             Text(invoice.title)
-                                .font(.largeTitle)
-                                .bold()
-                            
+                                .font(.system(size: 15,weight: .bold))
+                               
                             Text("\(invoice.dueDate, format: Date.FormatStyle(date: .numeric, time: .shortened))")
                                 .font(.callout)
-                            
-                            if let customer = invoice.customer {
-                                Text(customer.title)
-                                    .foregroundStyle(Color.blue)
-                                    .bold()
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 8)
-                                    .background(Color.blue.opacity(0.1),
-                                                in: RoundedRectangle(cornerRadius: 8,
-                                                                     style: .continuous))
+                            HStack{
+                                if let customer = invoice.customer {
+                                    Text(customer.title)
+                                        .foregroundStyle(Color.blue)
+                                        .bold()
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 8)
+                                        .background(Color.blue.opacity(0.1),
+                                                    in: RoundedRectangle(cornerRadius: 8,
+                                                                         style: .continuous))
+                                }
+                                // her
+                                if invoice.isPaid {
+                                    HStack{
+                                        Text("PAID")
+                                            .font(.system(size: 16,weight: .bold))
+                                            .foregroundStyle(.green)
+                                        
+                                        Image(systemName: "heart.fill")
+                                            .symbolVariant(.fill)
+                                            .foregroundColor(.red)
+                                            .font(.system(size: 16,weight: .bold))
+                                            .bold()
+                                    }
+                                }
                             }
                         }
       
