@@ -15,6 +15,7 @@ import SwiftData
 class Customer {
     @Attribute(.unique)
     var title: String
+    @Relationship(deleteRule: .cascade, inverse: \Invoice.customer)
     var invoices: [Invoice]?
     
     init(title: String ) {
@@ -29,7 +30,7 @@ class Invoice {
     var amount: Double
     var isPaid: Bool
     
-    @Relationship(deleteRule: .cascade, inverse: \Customer.invoices)
+   // @Relationship(deleteRule: .cascade, inverse: \Customer.invoices)
     var customer: Customer?
     
     init(

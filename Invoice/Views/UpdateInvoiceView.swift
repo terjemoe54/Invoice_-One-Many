@@ -26,7 +26,7 @@ struct UpdateInvoiceView: View {
             
             Section {
                 DatePicker("Forfallsdato",
-                           selection: $invoice.dueDate)
+                           selection: $invoice.dueDate, displayedComponents: .date)
                 Toggle("Betalt ?", isOn: $invoice.isPaid)
             }
             

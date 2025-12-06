@@ -34,7 +34,7 @@ struct CreateCustomerView: View {
                 }
                 
                 Section("Kunder") {
-                    ForEach(customers) { customer in
+                    ForEach(customers.sorted { $0.title < $1.title }) { customer in
                         Text(customer.title)
                             .swipeActions {
                                 Button(role: .destructive){

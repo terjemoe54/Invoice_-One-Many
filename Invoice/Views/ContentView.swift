@@ -23,24 +23,11 @@ struct ContentView: View {
                 ForEach(invoices) { invoice in
                    HStack {
                         VStack(alignment: .leading) {
-//                            if invoice.isPaid {
-//                                HStack{
-//                                    Text("PAID")
-//                                        .font(.system(size: 16,weight: .bold))
-//                                        .foregroundStyle(.green)
-//                                        
-//                                    Image(systemName: "heart.fill")
-//                                        .symbolVariant(.fill)
-//                                        .foregroundColor(.red)
-//                                        .font(.system(size: 16,weight: .bold))
-//                                        .bold()
-//                                }
-//                            }
-                            
+
                             Text(invoice.title)
                                 .font(.system(size: 15,weight: .bold))
                                
-                            Text("\(invoice.dueDate, format: Date.FormatStyle(date: .numeric, time: .shortened))")
+                            Text("\(invoice.dueDate, style: .date)")
                                 .font(.callout)
                             HStack{
                                 if let customer = invoice.customer {

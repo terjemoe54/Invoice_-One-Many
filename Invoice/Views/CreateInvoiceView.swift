@@ -25,13 +25,13 @@ struct CreateInvoiceView: View {
                 }
                 
                 Section("Detaljer"){
-                    DatePicker("Forfalls Dato", selection: $invoice.dueDate)
+                    DatePicker("Forfalls Dato", selection: $invoice.dueDate, displayedComponents: .date)
                     Toggle("Betalt:", isOn: $invoice.isPaid)
                 }
                 
                 Section("Velg en Kunde") {
                     Picker("", selection: $selectedCustomer){
-                        ForEach(customers) { customer in
+                        ForEach(customers.sorted { $0.title < $1.title }) { customer in
                             Text(customer.title)
                                 .tag(customer as Customer?)
                         }
