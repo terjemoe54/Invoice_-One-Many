@@ -17,6 +17,9 @@ struct ContentView: View {
     @State private var showCreateInvoice = false
     @State private var invoiceToEdit: Invoice?
     
+    @State private var showConfirmation: Bool = false
+    @State private var invoiceToDelete: Invoice?
+    
     var body: some View {
         NavigationStack {
             List {
@@ -74,22 +77,30 @@ struct ContentView: View {
                     }
                     .swipeActions {
                         
-                        Button(role: .destructive) {
-                            
-                            withAnimation {
-                                modelContext.delete(invoice)
-                            }
-                            
-                        } label: {
-                            Label("Slett", systemImage: "trash.fill")
-                        }
-                        
+                       Button(role: .destructive) {
+                           invoiceToDelete = invoice
+                           showConfirmation.toggle()
+                  }
+                
                         Button {
                             invoiceToEdit = invoice
                         } label: {
                             Label("Endre", systemImage: "pencil")
                         }
                         .tint(.orange)
+                    }
+                    .confirmationDialog("Delete", isPresented: $showConfirmation,titleVisibility: .hidden) {
+                        
+                        Button(role: .destructive) {
+                            withAnimation {
+                                modelContext.delete(invoiceToDelete!)
+                            }
+                            
+                        } label: {
+                          Text("Slett")
+                        }
+                    } message: {
+                      Text("Er du sikker på at du vil slette denne fakturan?")
                     }
                 }
             }
@@ -136,6 +147,7 @@ struct ContentView: View {
                     .padding(8)
                 }
             }
+           
         }
     }
     
