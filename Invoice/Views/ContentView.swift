@@ -24,12 +24,12 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(invoices) { invoice in
-                   HStack {
+                    HStack {
                         VStack(alignment: .leading) {
-
+                            
                             Text(invoice.title)
                                 .font(.system(size: 15,weight: .bold))
-                               
+                            
                             Text("\(invoice.dueDate, style: .date)")
                                 .font(.callout)
                             HStack{
@@ -59,7 +59,7 @@ struct ContentView: View {
                                 }
                             }
                         }
-      
+                        
                         Spacer()
                         
                         Button {
@@ -77,11 +77,11 @@ struct ContentView: View {
                     }
                     .swipeActions {
                         
-                       Button(role: .destructive) {
-                           invoiceToDelete = invoice
-                           showConfirmation.toggle()
-                  }
-                
+                        Button(role: .destructive) {
+                            invoiceToDelete = invoice
+                            showConfirmation.toggle()
+                        }
+                        
                         Button {
                             invoiceToEdit = invoice
                         } label: {
@@ -89,21 +89,25 @@ struct ContentView: View {
                         }
                         .tint(.orange)
                     }
-                    .confirmationDialog("Delete", isPresented: $showConfirmation,titleVisibility: .hidden) {
-                        
-                        Button(role: .destructive) {
-                            withAnimation {
-                                modelContext.delete(invoiceToDelete!)
-                            }
-                            
-                        } label: {
-                          Text("Slett")
-                        }
-                    } message: {
-                      Text("Er du sikker på at du vil slette denne fakturan?")
-                    }
                 }
             }
+            .confirmationDialog(
+                "Slett",
+                isPresented: $showConfirmation,
+                titleVisibility: .visible,
+                presenting: invoiceToDelete ,
+                actions: { item in
+                    Button(role: .destructive) {
+                        withAnimation {
+                            modelContext.delete(item)
+                        }
+                    } label: {
+                        Text("Slett")
+                    }
+                },
+                message: { item in
+                    Text("Er du sikker på at du vil slette \(item.title)?")
+                })
             .navigationTitle("Faktura Liste")
             .bold()
             .sheet(item: $invoiceToEdit,
@@ -147,13 +151,6 @@ struct ContentView: View {
                     .padding(8)
                 }
             }
-           
-        }
-    }
-    
-    private func delete(item: Invoice) {
-        withAnimation {
-            modelContext.delete(item)
         }
     }
 }
