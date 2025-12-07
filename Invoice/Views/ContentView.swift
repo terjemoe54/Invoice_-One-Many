@@ -40,7 +40,7 @@ struct ContentView: View {
                                                     in: RoundedRectangle(cornerRadius: 8,
                                                                          style: .continuous))
                                 }
-                                // her
+                                
                                 if invoice.isPaid {
                                     HStack{
                                         Text("PAID")
@@ -119,29 +119,22 @@ struct ContentView: View {
             })
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Ny Kunde") {
+                    Button("Ny Kunde \(Image(systemName: "person.2.fill"))") {
                         showCreateCustomer.toggle()
                     }
                     .buttonStyle(.borderedProminent)
-                    .bold()
-                    .font(.title2)
+                    .font(.system(size: 15, weight: .bold))
                     .padding(8)
                 }
-            }
-            .safeAreaInset(edge: .bottom,
-                           alignment: .leading) {
-                Button(action: {
-                    showCreateInvoice.toggle()
-                }, label: {
-                    Label("Ny Faktura", systemImage: "plus")
-                        .bold()
-                        .font(.title2)
-                        .padding(8)
-                        .background(.blue.opacity(0.1),
-                                    in: Capsule())
-                        .padding(.leading)
-                        .symbolVariant(.circle.fill)
-                })
+                
+                ToolbarItem(placement: .topBarLeading)   {
+                    Button("Faktura \(Image(systemName: "plus"))") {
+                        showCreateInvoice.toggle()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .font(.system(size: 15, weight: .bold))
+                    .padding(8)
+                }
             }
         }
     }
